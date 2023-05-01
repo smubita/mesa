@@ -1,0 +1,33 @@
+# An unique identifier for the head node and workers of this cluster.
+cluster_name: mesa
+
+# The maximum number of workers nodes to launch in addition to the
+# head node.
+max_workers: 1
+
+# Cloud-provider specific configuration.
+provider:
+    type: gcp
+    project_id: gcp-ent-dsal-dev
+    region: us-east-4
+    availability_zone: us-east-4a
+
+# How Ray will authenticate with newly launched nodes.
+auth:
+    ssh_user: ubuntu
+    gcp_keyfile: /home/stephen/.config/gcloud/application_default_credentials.json
+
+head_node:
+  machine_type: n1-standard-1
+  image_project: ubuntu-os-cloud
+  image_family: ubuntu-1804-lts
+  disk_size: 100
+
+worker_nodes:
+  machine_type: n1-standard-1
+  image_project: ubuntu-os-cloud
+  image_family: ubuntu-1804-lts
+  disk_size: 100
+
+docker:
+  image: mesa
